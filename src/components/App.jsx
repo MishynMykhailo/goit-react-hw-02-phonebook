@@ -51,7 +51,7 @@ export class App extends Component {
     });
 
     console.log(visibleContacts);
-    const { contacts, filter } = this.state;
+    const { filter } = this.state;
     return (
       <div>
         <h1>Phonebook</h1>
