@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
+import s from '../ContactForm/ContactForm.module.css';
 export default class ContactForm extends Component {
   state = {
     name: '',
@@ -13,29 +13,21 @@ export default class ContactForm extends Component {
 
   handlerSumbit = e => {
     e.preventDefault();
-    this.addContacts();
+
+    this.props.onSubmit(this.state.name, this.state.number);
     this.reset();
   };
   reset = () => {
     this.setState({ name: '', number: '' });
   };
-  addContacts = name => {
-    const contact = {
-      id: nanoid(),
-      name: this.state.name,
-      number: this.state.number,
-    };
 
-    this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
-    }));
-  };
   render() {
     return (
-      <form onSubmit={this.handlerSumbit}>
-        <label>
+      <form onSubmit={this.handlerSumbit} className={s.form}>
+        <label className={s.label}>
           Name
           <input
+            className={s.input}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -45,16 +37,19 @@ export default class ContactForm extends Component {
             value={this.state.name}
           />
         </label>
-        <label>
+        <label className={s.label}>
           Number
           <input
+            className={s.input}
             type="tel"
             name="number"
             onChange={this.handlerChange}
             value={this.state.number}
           />
         </label>
-        <button type="submit">Add contact </button>
+        <button className={s.button} type="submit">
+          Add contact{' '}
+        </button>
       </form>
     );
   }
