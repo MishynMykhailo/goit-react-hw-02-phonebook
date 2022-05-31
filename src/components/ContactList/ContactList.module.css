@@ -1,17 +1,13 @@
 .li {
   margin: 0;
   padding: 0;
-  width: 300px;
 }
 .divItemContainer {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
-}
-.p {
-  margin: 0;
-  padding: 0;
-  margin-right: 15px;
+  padding: 5px;
+  border-bottom: 1px solid black;
 }
 .button {
   width: 80px;
